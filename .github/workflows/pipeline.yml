@@ -1,0 +1,28 @@
+name: Gestão Armazém C.I.
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-all: 
+                          
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 6.0.x
+
+    - name: Build & Test .NET
+      run: echo 'Building and Testing .NET' 
+        && dotnet restore 'Gestão Armazém/DDDNetCore.csproj' 
+        && dotnet build --no-restore --configuration Release 'Gestão Armazém/DDDNetCore.csproj'
+        && dotnet restore 'GestãoArmazénsTests/GestãoArmazénsTests.csproj'
+        && dotnet build --no-restore --configuration Release 'GestãoArmazénsTests/GestãoArmazénsTests.csproj'
+        && dotnet test --no-build --configuration Release 'GestãoArmazénsTests/GestãoArmazénsTests.csproj'
+    
