@@ -1,0 +1,1 @@
+realease: cd $HOME/heroku_output/GestaoArmazem && dotnet ./GestaoArmazem.dll
