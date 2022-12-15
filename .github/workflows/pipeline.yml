@@ -20,9 +20,9 @@ jobs:
 
     - name: Build & Test .NET
       run: echo 'Building and Testing .NET' 
-        && dotnet restore 'Gestão Armazém/DDDNetCore.csproj' 
-        && dotnet build --no-restore --configuration Release 'Gestão Armazém/DDDNetCore.csproj'
-        && dotnet restore 'GestãoArmazénsTests/GestãoArmazénsTests.csproj'
-        && dotnet build --no-restore --configuration Release 'GestãoArmazénsTests/GestãoArmazénsTests.csproj'
-        && dotnet test --no-build --configuration Release 'GestãoArmazénsTests/GestãoArmazénsTests.csproj'
+        && dotnet restore 'GestaoArmazem/DDDNetCore.csproj' 
+        && dotnet build --no-restore --configuration Release 'GestaoArmazem/DDDNetCore.csproj'
+        && dotnet restore 'GestaoArmazensTests/GestaoArmazensTests.csproj'
+        && dotnet build --no-restore --configuration Release 'GestaoArmazensTests/GestaoArmazensTests.csproj'
+        && dotnet test --no-build --configuration Release 'GestaoArmazensTests/GestaoArmazensTests.csproj'
     
