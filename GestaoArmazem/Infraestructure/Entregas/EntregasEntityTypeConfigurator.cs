@@ -26,7 +26,7 @@ namespace DDDSample1.Infrastructure.Entregas
                 dataEntrega.Property("ano").IsRequired(true);
             });
             entityTypeBuilder.OwnsOne(entrega => entrega.Massa, massa => { massa.Property("massa").IsRequired(true); });
-            entityTypeBuilder.OwnsOne(entrega => entrega.TempoColocacao, tempoColocacao => { tempoColocacao.Property("tempoColocação").IsRequired(true); });
+            entityTypeBuilder.OwnsOne(entrega => entrega.TempoColocacao, tempoColocacao => { tempoColocacao.Property("tempoColocacao").IsRequired(true); });
             entityTypeBuilder.OwnsOne(entrega => entrega.TempoRetirada, tempoRetirada => { tempoRetirada.Property("tempoRetirada").IsRequired(true); });
         }
     }

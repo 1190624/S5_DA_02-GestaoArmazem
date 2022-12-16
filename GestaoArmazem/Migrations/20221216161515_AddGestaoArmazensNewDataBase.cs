@@ -4,7 +4,7 @@
 
 namespace DDDNetCore.Migrations
 {
-    public partial class AddBaseDeDadosArmazens : Migration
+    public partial class AddGestaoArmazensNewDataBase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,31 +12,31 @@ namespace DDDNetCore.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "armazéns",
+                name: "armazens",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "varchar(255)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Active = table.Column<bool>(type: "tinyint(1)", nullable: false),
-                    Designação_texto = table.Column<string>(type: "longtext", nullable: true)
+                    Designacao_texto = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Endereço_códigoPostal = table.Column<string>(type: "longtext", nullable: true)
+                    Endereco_codigoPostal = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Endereço_localidade = table.Column<string>(type: "longtext", nullable: true)
+                    Endereco_localidade = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Endereço_nomeRua = table.Column<string>(type: "longtext", nullable: true)
+                    Endereco_nomeRua = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Endereço_númeroPorta = table.Column<short>(type: "smallint", nullable: true),
-                    Endereço_país = table.Column<string>(type: "longtext", nullable: true)
+                    Endereco_numeroPorta = table.Column<short>(type: "smallint", nullable: true),
+                    Endereco_pais = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Munícipio_nome = table.Column<string>(type: "longtext", nullable: true)
+                    Municipio_nome = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Coordenadas_latitude = table.Column<double>(type: "double", nullable: true),
                     Coordenadas_longitude = table.Column<double>(type: "double", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_armazéns", x => x.Id);
+                    table.PrimaryKey("PK_armazens", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -96,7 +96,7 @@ namespace DDDNetCore.Migrations
                 {
                     Id = table.Column<string>(type: "varchar(255)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    ArmazémId = table.Column<string>(type: "varchar(255)", nullable: true)
+                    ArmazemId = table.Column<string>(type: "varchar(255)", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     DataEntrega_ano = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
@@ -105,24 +105,24 @@ namespace DDDNetCore.Migrations
                     DataEntrega_mes = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Massa_massa = table.Column<double>(type: "double", nullable: true),
-                    TempoColocação_tempoColocação = table.Column<double>(type: "double", nullable: true),
+                    TempoColocacao_tempoColocacao = table.Column<double>(type: "double", nullable: true),
                     TempoRetirada_tempoRetirada = table.Column<double>(type: "double", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_entrega", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_entrega_armazéns_ArmazémId",
-                        column: x => x.ArmazémId,
-                        principalTable: "armazéns",
+                        name: "FK_entrega_armazens_ArmazemId",
+                        column: x => x.ArmazemId,
+                        principalTable: "armazens",
                         principalColumn: "Id");
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateIndex(
-                name: "IX_entrega_ArmazémId",
+                name: "IX_entrega_ArmazemId",
                 table: "entrega",
-                column: "ArmazémId");
+                column: "ArmazemId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -140,7 +140,7 @@ namespace DDDNetCore.Migrations
                 name: "Products");
 
             migrationBuilder.DropTable(
-                name: "armazéns");
+                name: "armazens");
         }
     }
 }

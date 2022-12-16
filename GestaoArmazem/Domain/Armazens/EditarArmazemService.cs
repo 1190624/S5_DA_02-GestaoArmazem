@@ -19,7 +19,7 @@ namespace DDDSample1.Domain.Armazens
             this._repo = repo;
         }
 
-        public async Task<ArmazemDTO> EditarArmazémAsync(ArmazemDTO novoArmazemDTO)
+        public async Task<ArmazemDTO> EditarArmazemAsync(ArmazemDTO novoArmazemDTO)
         {
             var armazem = await this._repo.GetByIdAsync(new Identificador(novoArmazemDTO.GetIdentificador));
             if(armazem == null)

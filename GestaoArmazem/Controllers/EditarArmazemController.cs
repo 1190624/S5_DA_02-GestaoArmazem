@@ -12,18 +12,18 @@ namespace DDDSample1.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class EditarArmazémController : ControllerBase
+    public class EditarArmazemController : ControllerBase
     {
         private readonly EditarArmazemService _service;
 
-        public EditarArmazémController(EditarArmazemService service)
+        public EditarArmazemController(EditarArmazemService service)
         {
             _service = service;
         }
 
         // PUT: api/EditarArmazém/id
        [HttpPut("{Id}")]
-        public async Task<ActionResult<JObject>> EditarArmazém(String Id, JObject novoArmazemJSON)
+        public async Task<ActionResult<JObject>> EditarArmazem(String Id, JObject novoArmazemJSON)
         {
             
             if (Id.ToString() != novoArmazemJSON.ToObject<ArmazemDTO>().GetIdentificador)
@@ -33,8 +33,8 @@ namespace DDDSample1.Controllers
 
             try
             {
-                var armazémDTO = await _service.EditarArmazémAsync(novoArmazemJSON.ToObject<ArmazemDTO>());
-                var response = JObject.FromObject(armazémDTO);
+                var armazemDTO = await _service.EditarArmazemAsync(novoArmazemJSON.ToObject<ArmazemDTO>());
+                var response = JObject.FromObject(armazemDTO);
                 
                 if (response == null)
                 {

@@ -10,11 +10,11 @@ namespace DDDSample1.Infrastructure.Armazens {
             entityTypeBuilder.OwnsOne(armazem => armazem.Designacao,
                 designação => {designação.Property("texto").IsRequired(true);});
             entityTypeBuilder.OwnsOne(armazem => armazem.Endereco, endereco => { 
-                endereco.Property("códigoPostal").IsRequired(true);
-                endereco.Property("númeroPorta").IsRequired(true);
+                endereco.Property("codigoPostal").IsRequired(true);
+                endereco.Property("numeroPorta").IsRequired(true);
                 endereco.Property("nomeRua").IsRequired(true);
                 endereco.Property("localidade").IsRequired(true);
-                endereco.Property("país").IsRequired(true);
+                endereco.Property("pais").IsRequired(true);
                 });
             entityTypeBuilder.OwnsOne(armazem => armazem.Municipio,
                 municipio => {municipio.Property("nome").IsRequired(true);});

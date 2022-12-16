@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DDDNetCore.Migrations
 {
     [DbContext(typeof(DDDSample1DbContext))]
-    [Migration("20221123191441_AddBaseDeDadosArmazens")]
-    partial class AddBaseDeDadosArmazens
+    [Migration("20221216161515_AddGestaoArmazensNewDataBase")]
+    partial class AddGestaoArmazensNewDataBase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,7 +20,7 @@ namespace DDDNetCore.Migrations
                 .HasAnnotation("ProductVersion", "6.0.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("DDDSample1.Domain.Armazéns.Armazém", b =>
+            modelBuilder.Entity("DDDSample1.Domain.Armazens.Armazem", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("varchar(255)");
@@ -30,7 +30,7 @@ namespace DDDNetCore.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("armazéns");
+                    b.ToTable("armazens");
                 });
 
             modelBuilder.Entity("DDDSample1.Domain.Categories.Category", b =>
@@ -54,12 +54,12 @@ namespace DDDNetCore.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("varchar(255)");
 
-                    b.Property<string>("ArmazémId")
+                    b.Property<string>("ArmazemId")
                         .HasColumnType("varchar(255)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ArmazémId");
+                    b.HasIndex("ArmazemId");
 
                     b.ToTable("entrega");
                 });
@@ -99,11 +99,11 @@ namespace DDDNetCore.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("DDDSample1.Domain.Armazéns.Armazém", b =>
+            modelBuilder.Entity("DDDSample1.Domain.Armazens.Armazem", b =>
                 {
-                    b.OwnsOne("DDDSample1.Domain.Armazéns.Coordenadas", "Coordenadas", b1 =>
+                    b.OwnsOne("DDDSample1.Domain.Armazens.Coordenadas", "Coordenadas", b1 =>
                         {
-                            b1.Property<string>("ArmazémId")
+                            b1.Property<string>("ArmazemId")
                                 .HasColumnType("varchar(255)");
 
                             b1.Property<double>("latitude")
@@ -112,37 +112,37 @@ namespace DDDNetCore.Migrations
                             b1.Property<double>("longitude")
                                 .HasColumnType("double");
 
-                            b1.HasKey("ArmazémId");
+                            b1.HasKey("ArmazemId");
 
-                            b1.ToTable("armazéns");
+                            b1.ToTable("armazens");
 
                             b1.WithOwner()
-                                .HasForeignKey("ArmazémId");
+                                .HasForeignKey("ArmazemId");
                         });
 
-                    b.OwnsOne("DDDSample1.Domain.Armazéns.Designação", "Designação", b1 =>
+                    b.OwnsOne("DDDSample1.Domain.Armazens.Designacao", "Designacao", b1 =>
                         {
-                            b1.Property<string>("ArmazémId")
+                            b1.Property<string>("ArmazemId")
                                 .HasColumnType("varchar(255)");
 
                             b1.Property<string>("texto")
                                 .IsRequired()
                                 .HasColumnType("longtext");
 
-                            b1.HasKey("ArmazémId");
+                            b1.HasKey("ArmazemId");
 
-                            b1.ToTable("armazéns");
+                            b1.ToTable("armazens");
 
                             b1.WithOwner()
-                                .HasForeignKey("ArmazémId");
+                                .HasForeignKey("ArmazemId");
                         });
 
-                    b.OwnsOne("DDDSample1.Domain.Armazéns.Endereço", "Endereço", b1 =>
+                    b.OwnsOne("DDDSample1.Domain.Armazens.Endereco", "Endereco", b1 =>
                         {
-                            b1.Property<string>("ArmazémId")
+                            b1.Property<string>("ArmazemId")
                                 .HasColumnType("varchar(255)");
 
-                            b1.Property<string>("códigoPostal")
+                            b1.Property<string>("codigoPostal")
                                 .IsRequired()
                                 .HasColumnType("longtext");
 
@@ -154,52 +154,52 @@ namespace DDDNetCore.Migrations
                                 .IsRequired()
                                 .HasColumnType("longtext");
 
-                            b1.Property<short>("númeroPorta")
+                            b1.Property<short>("numeroPorta")
                                 .HasColumnType("smallint");
 
-                            b1.Property<string>("país")
+                            b1.Property<string>("pais")
                                 .IsRequired()
                                 .HasColumnType("longtext");
 
-                            b1.HasKey("ArmazémId");
+                            b1.HasKey("ArmazemId");
 
-                            b1.ToTable("armazéns");
+                            b1.ToTable("armazens");
 
                             b1.WithOwner()
-                                .HasForeignKey("ArmazémId");
+                                .HasForeignKey("ArmazemId");
                         });
 
-                    b.OwnsOne("DDDSample1.Domain.Armazéns.Munícipio", "Munícipio", b1 =>
+                    b.OwnsOne("DDDSample1.Domain.Armazens.Municipio", "Municipio", b1 =>
                         {
-                            b1.Property<string>("ArmazémId")
+                            b1.Property<string>("ArmazemId")
                                 .HasColumnType("varchar(255)");
 
                             b1.Property<string>("nome")
                                 .IsRequired()
                                 .HasColumnType("longtext");
 
-                            b1.HasKey("ArmazémId");
+                            b1.HasKey("ArmazemId");
 
-                            b1.ToTable("armazéns");
+                            b1.ToTable("armazens");
 
                             b1.WithOwner()
-                                .HasForeignKey("ArmazémId");
+                                .HasForeignKey("ArmazemId");
                         });
 
                     b.Navigation("Coordenadas");
 
-                    b.Navigation("Designação");
+                    b.Navigation("Designacao");
 
-                    b.Navigation("Endereço");
+                    b.Navigation("Endereco");
 
-                    b.Navigation("Munícipio");
+                    b.Navigation("Municipio");
                 });
 
             modelBuilder.Entity("DDDSample1.Domain.Entregas.Entrega", b =>
                 {
-                    b.HasOne("DDDSample1.Domain.Armazéns.Armazém", "armazem")
+                    b.HasOne("DDDSample1.Domain.Armazens.Armazem", "armazem")
                         .WithMany("entregas")
-                        .HasForeignKey("ArmazémId");
+                        .HasForeignKey("ArmazemId");
 
                     b.OwnsOne("DDDSample1.Domain.Entregas.DataEntrega", "DataEntrega", b1 =>
                         {
@@ -242,12 +242,12 @@ namespace DDDNetCore.Migrations
                                 .HasForeignKey("EntregaId");
                         });
 
-                    b.OwnsOne("DDDSample1.Domain.Entregas.TempoColocação", "TempoColocação", b1 =>
+                    b.OwnsOne("DDDSample1.Domain.Entregas.TempoColocacao", "TempoColocacao", b1 =>
                         {
                             b1.Property<string>("EntregaId")
                                 .HasColumnType("varchar(255)");
 
-                            b1.Property<double>("tempoColocação")
+                            b1.Property<double>("tempoColocacao")
                                 .HasColumnType("double");
 
                             b1.HasKey("EntregaId");
@@ -278,14 +278,14 @@ namespace DDDNetCore.Migrations
 
                     b.Navigation("Massa");
 
-                    b.Navigation("TempoColocação");
+                    b.Navigation("TempoColocacao");
 
                     b.Navigation("TempoRetirada");
 
                     b.Navigation("armazem");
                 });
 
-            modelBuilder.Entity("DDDSample1.Domain.Armazéns.Armazém", b =>
+            modelBuilder.Entity("DDDSample1.Domain.Armazens.Armazem", b =>
                 {
                     b.Navigation("entregas");
                 });

@@ -29,11 +29,11 @@ namespace DDDSample1.Domain.Armazens {
             this.pais = pais;
         }
 
-        public String GetCódigoPostal => codigoPostal;
-        public Int16 GetNúmeroPorta => numeroPorta;
+        public String GetCodigoPostal => codigoPostal;
+        public Int16 GetNumeroPorta => numeroPorta;
         public String GetNomeRua => nomeRua;
         public String GetLocalidade => localidade;
-        public String GetPaís => pais;
+        public String GetPais => pais;
 
         public override bool Equals(object obj) {
             if (ReferenceEquals(null, obj))
