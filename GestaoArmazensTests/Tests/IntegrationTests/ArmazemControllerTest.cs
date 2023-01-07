@@ -16,7 +16,7 @@ namespace Tests.TestesUnitarios.User
         [Fact]
         public async Task Create_Sucess(){
             Armazem armazem1 = new ArmazemFactory().CriarArmazem("T16","Armazém Matosinhos","2311-412", 2311, "Rua de Matosinhos",
-                "Senhora da Hora", "Portugal", "Matosinhos", 23.21, 23.21);
+                "Senhora da Hora", "Portugal", "Matosinhos", 23.21, 23.21, 250);
             ArmazemDTO armazemDTO = ArmazemMapper.toDTO(armazem1);
             JObject armazemJSon = JObject.FromObject(armazemDTO);
          
