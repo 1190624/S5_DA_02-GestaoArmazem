@@ -19,6 +19,8 @@ namespace DDDSample1.Domain.Armazens
         private Municipio municipio;
         [DataMember(Name = "Coordenadas")]
         private Coordenadas coordenadas;
+        [DataMember(Name = "Altitude")]
+        private Altitude altitude;
 
         public ICollection<Entrega> entregas { get; private set; }
 
@@ -29,13 +31,14 @@ namespace DDDSample1.Domain.Armazens
             this.Active = true;
         }
 
-        public Armazem(Identificador identificador, Designacao designacao, Endereco endereco, Municipio municipio, Coordenadas coordenadas)
+        public Armazem(Identificador identificador, Designacao designacao, Endereco endereco, Municipio municipio, Coordenadas coordenadas, Altitude altitude)
         {
             this.Id = identificador;
             this.designacao = designacao;
             this.endereco = endereco;
             this.municipio = municipio;
             this.coordenadas = coordenadas;
+            this.altitude = altitude;
             this.Active = true;
         }
 
@@ -47,6 +50,7 @@ namespace DDDSample1.Domain.Armazens
         }
         public Municipio Municipio => municipio;
         public Coordenadas Coordenadas => coordenadas;
+        public Altitude Altitude => altitude;
 
         public void changeDesignacao(String designacao)
         {
@@ -66,6 +70,11 @@ namespace DDDSample1.Domain.Armazens
         public void changeCoordenadas(Double latitude, Double longitude)
         {
             this.coordenadas = new Coordenadas(latitude, longitude);
+        }
+
+        public void changeAltitude(Double altitude)
+        {
+            this.altitude = new Altitude(altitude);
         }
 
 
