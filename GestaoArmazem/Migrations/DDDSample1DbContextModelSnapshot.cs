@@ -99,6 +99,22 @@ namespace DDDNetCore.Migrations
 
             modelBuilder.Entity("DDDSample1.Domain.Armazens.Armazem", b =>
                 {
+                    b.OwnsOne("DDDSample1.Domain.Armazens.Altitude", "Altitude", b1 =>
+                        {
+                            b1.Property<string>("ArmazemId")
+                                .HasColumnType("varchar(255)");
+
+                            b1.Property<double>("altitude")
+                                .HasColumnType("double");
+
+                            b1.HasKey("ArmazemId");
+
+                            b1.ToTable("armazens");
+
+                            b1.WithOwner()
+                                .HasForeignKey("ArmazemId");
+                        });
+
                     b.OwnsOne("DDDSample1.Domain.Armazens.Coordenadas", "Coordenadas", b1 =>
                         {
                             b1.Property<string>("ArmazemId")
@@ -183,6 +199,8 @@ namespace DDDNetCore.Migrations
                             b1.WithOwner()
                                 .HasForeignKey("ArmazemId");
                         });
+
+                    b.Navigation("Altitude");
 
                     b.Navigation("Coordenadas");
 
