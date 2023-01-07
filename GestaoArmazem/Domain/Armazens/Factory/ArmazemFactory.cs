@@ -13,7 +13,8 @@ namespace DDDSample1.Domain.Armazens.Factory {
             String pais,
             String municipio,
             Double latitude,
-            Double longitude) {
+            Double longitude,
+            Double altitude) {
                 ArmazemValidator armazemValidator = new ArmazemValidator();
 
                 if (armazemValidator.IsValid(identificador,
@@ -25,12 +26,14 @@ namespace DDDSample1.Domain.Armazens.Factory {
                     pais, 
                     municipio, 
                     latitude, 
-                    longitude))
+                    longitude,
+                    altitude))
                     return new Armazem(new Identificador(identificador),
                         new Designacao(designacao),
                         new Endereco(codigoPostal, numeroPorta, nomeRua, localidade, pais),
                         new Municipio(municipio),
-                        new Coordenadas(latitude, longitude));
+                        new Coordenadas(latitude, longitude),
+                        new Altitude(altitude));
 
                 return null;
             }
