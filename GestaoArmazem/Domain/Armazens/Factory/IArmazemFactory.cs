@@ -11,6 +11,7 @@ namespace DDDSample1.Domain.Armazens.Factory {
             String pais,
             String municipio,
             Double latitude,
-            Double longitude);
+            Double longitude,
+            Double altitude);
     }
 }
