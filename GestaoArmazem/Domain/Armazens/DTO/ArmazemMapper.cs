@@ -14,7 +14,8 @@ namespace DDDSample1.Domain.Armazens.DTO {
                 armazem.Endereco.GetPais,
                 armazem.Municipio.GetNome,
                 armazem.Coordenadas.GetLatitude,
-                armazem.Coordenadas.GetLongitude);
+                armazem.Coordenadas.GetLongitude,
+                armazem.Altitude.GetAltitude);
         }
 
         public static Armazem toArmazem(ArmazemDTO armazemDTO) {
@@ -27,7 +28,8 @@ namespace DDDSample1.Domain.Armazens.DTO {
                 armazemDTO.GetPais,
                 armazemDTO.GetMunicipio,
                 armazemDTO.GetLatitude,
-                armazemDTO.GetLongitude);
+                armazemDTO.GetLongitude,
+                armazemDTO.GetAltitude);
         }
     }
 }
