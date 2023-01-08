@@ -26,6 +26,8 @@ namespace DDDSample1.Domain.Armazens.DTO {
         public Double longitude;
         [DataMember(Name = "Altitude")]
         public Double altitude;
+        [DataMember(Name = "Estado")]
+        public Boolean estado;
 
         public ArmazemDTO(String identificador,
             String designacao, 
@@ -37,7 +39,8 @@ namespace DDDSample1.Domain.Armazens.DTO {
             String municipio, 
             Double latitude, 
             Double longitude,
-            Double altitude) {
+            Double altitude,
+            Boolean estado) {
             this.identificador = identificador;
             this.designacao = designacao;
             this.codigoPostal = codigoPostal;
@@ -49,6 +52,7 @@ namespace DDDSample1.Domain.Armazens.DTO {
             this.latitude = latitude;
             this.longitude = longitude;
             this.altitude = altitude;
+            this.estado = estado;
         }
         
         public String GetIdentificador => identificador;
@@ -62,5 +66,6 @@ namespace DDDSample1.Domain.Armazens.DTO {
         public Double GetLatitude => latitude;
         public Double GetLongitude => longitude;
         public Double GetAltitude => altitude;
+        public Boolean GetEstado => estado;
     }
 }
