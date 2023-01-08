@@ -50,8 +50,21 @@ namespace DDDSample1.Domain.Armazens {
             if (armazém == null)
                 return null;   
 
-            
             this.armazemRepo.Remove(armazém);
+            await this.gestorPersist.CommitAsync();
+
+            return ArmazemMapper.toDTO(armazém);
+        }
+
+        public async Task<ArmazemDTO> AtivarDesativarArmazem(String Id)
+        {
+            Identificador identificador = new Identificador(Id);
+            var armazém = await armazemRepo.GetByIdAsync(identificador); 
+
+            if (armazém == null)
+                return null;   
+
+            armazém.changeEstado();
             await this.gestorPersist.CommitAsync();
 
             return ArmazemMapper.toDTO(armazém);
