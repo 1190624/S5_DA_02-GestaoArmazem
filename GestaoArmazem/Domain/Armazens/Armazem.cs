@@ -22,6 +22,9 @@ namespace DDDSample1.Domain.Armazens
         [DataMember(Name = "Altitude")]
         private Altitude altitude;
 
+        [DataMember(Name = "Estado")]
+        private Boolean estado;
+
         public ICollection<Entrega> entregas { get; private set; }
 
 
@@ -77,7 +80,9 @@ namespace DDDSample1.Domain.Armazens
             this.altitude = new Altitude(altitude);
         }
 
-
+        public void changeEstado(){
+            this.Active = !Active;
+        }
 
 
         public void AddEntrega(Entrega e)
