@@ -15,7 +15,8 @@ namespace DDDSample1.Domain.Armazens.DTO {
                 armazem.Municipio.GetNome,
                 armazem.Coordenadas.GetLatitude,
                 armazem.Coordenadas.GetLongitude,
-                armazem.Altitude.GetAltitude);
+                armazem.Altitude.GetAltitude,
+                armazem.Active);
         }
 
         public static Armazem toArmazem(ArmazemDTO armazemDTO) {
