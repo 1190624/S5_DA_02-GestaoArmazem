@@ -65,5 +65,26 @@ namespace DDDSample1.Controllers {
                return BadRequest(new {Message = ex.Message});
             }
         }
+
+        [HttpPut("desativar/{ID}")]
+        //[Authorize]
+        public async Task<ActionResult<JObject>> AtivarDesativarArmazem(String Id)
+        {
+            try
+            {
+                var response = await service.AtivarDesativarArmazem(Id);
+
+                if (response == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(response);
+            }
+            catch(BusinessRuleValidationException ex)
+            {
+               return BadRequest(new {Message = ex.Message});
+            }
+        }
     }
 }
